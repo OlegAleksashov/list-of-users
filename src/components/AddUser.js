@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 
 function AddUser(props) {
+    let userAdd = {}
     const [state, setState] = useState(
         {
             firstname: '',
@@ -39,13 +40,17 @@ function AddUser(props) {
             />
             <button type="button" onClick={() => {
                 myForm.current.reset();// clean up the form
-                props.onAdd(
-                {firstname: state.firstname,
-                secondname: state.secondname,
-                age: state.age,
-                bio: state.bio,
-                isHappy: state.isHappy}
-                )}}>Add</button>
+                userAdd = {
+                    firstname: state.firstname,
+                    secondname: state.secondname,
+                    age: state.age,
+                    bio: state.bio,
+                    isHappy: state.isHappy
+                }
+                if(props.friend) {
+                    userAdd.id = props.friend.id;
+                }
+                props.onAdd(userAdd)}}>Add</button>
         </form>
     );
 }

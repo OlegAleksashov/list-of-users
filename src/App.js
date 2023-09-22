@@ -34,11 +34,17 @@ const deleteUser = (id) => {
    setUsers(users.filter((el) => el.id !== id))
 }
 
+const editUser = (user) => {
+  let allUsers = [...users];
+  allUsers[user.id - 1] = user;
+  setUsers(allUsers)
+}
+
   return(
     <div className="name">
       <Header title='List of users' />
       <main>
-        <Users users={users} onDelete={deleteUser}/>
+        <Users users={users} onEdit={editUser} onDelete={deleteUser}/>
       </main>
       <aside>
         <AddUser onAdd={addUser}/>

@@ -7,7 +7,7 @@ function Users(props) {
         return(
             <div>
                 {props.users.map((element) => (
-                    <User onDelete={props.onDelete} key={element.id} friend={element}/>
+                    <User onEdit={props.onEdit} onDelete={props.onDelete} key={element.id} friend={element}/>
                 ))}
             </div>
         );
